@@ -1,0 +1,8 @@
+<h1>All recipes</h1>
+
+<div class="recipe-preview-container">
+  <div ng-repeat="recipe in vm.recipes">
+    <h2>{{recipe.name}}</h2>
+    <div class="recipe-preview-pic" style="background-image: url({{recipe.photo_url}})"></div>
+  </div>
+</div>

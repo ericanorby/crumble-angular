@@ -1,0 +1,21 @@
+header {
+  background: lightgray;
+  padding: 20px;
+}
+
+.recipe-preview-container {
+  display: flex;
+  padding: 10px;
+}
+
+.recipe-preview-container > div {
+  padding: 10px;
+}
+
+.recipe-preview-pic {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid gray;
+}

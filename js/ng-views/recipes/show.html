@@ -1,0 +1,18 @@
+<div class="recipe-show">
+  <div class="recipe-pic" style="background-image: url({{vm.recipe.photo_url}})"></div>
+  <div class="recipe-info">
+    <h1>{{vm.recipe.name}}</h1>
+    <h2>Submitted by: {{vm.recipe.author}}</h2>
+    <h3>Source: {{vm.recipe.source}}</h3>
+    <ul>
+      <li>Servings: {{vm.recipe.servings}}</li>
+      <li>Total Cost: {{vm.recipe.total_cost}}</li>
+      <li>Cost/Serving: {{vm.recipe.cost_per_serving}}</li>
+      <li>Cal/Serving: {{vm.recipe.cal_per_serving}}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="directions">
+  <p>{{vm.recipe.directions}}</p>
+</div>

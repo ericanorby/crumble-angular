@@ -17,6 +17,12 @@ angular
     "$state",
     "Factory",
     RecipeIndexControllerFunction
+  ])
+  .controller("RecipeShowController", [
+    "$stateParams",
+    "$state",
+    "Factory",
+    RecipeShowControllerFunction
   ]);
 
 function RouterFunction($stateProvider, $urlRouterProvider) {
@@ -26,7 +32,13 @@ function RouterFunction($stateProvider, $urlRouterProvider) {
       templateUrl: "/js/ng-views/recipes/index.html",
       controller: "RecipeIndexController",
       controllerAs: "vm"
-    });
+    })
+    .state("RecipeShow", {
+      url: "/recipes/:id",
+      templateUrl: "/js/ng-views/recipes/show.html",
+      controller: "RecipeShowController",
+      controllerAs: "vm"
+    })
   $urlRouterProvider.otherwise("/recipes");
 }
 
@@ -40,4 +52,8 @@ function FactoryFunction($resource) {
 
 function RecipeIndexControllerFunction($stateParams, $state, Factory) {
   this.recipes = Factory.recipes.query();
+}
+
+function RecipeShowControllerFunction($stateParams, $state, Factory) {
+  this.recipe = Factory.recipes.get({id: $stateParams.id});
 }

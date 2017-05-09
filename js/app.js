@@ -45,7 +45,10 @@ function RouterFunction($stateProvider, $urlRouterProvider) {
 function FactoryFunction($resource) {
   return {
     recipes: $resource("http://localhost:3000/recipes/:id", {id: "@id"}, {
-        update: {method: "PUT"}
+      update: {method: "PUT"}
+    }),
+    ingredients: $resource("http://localhost:3000/recipes/:recipe_id/ingredients/:id", {recipe_id: "@recipe_id", id: "@id"}, {
+      update: {method: "PUT"}
     })
   }
 }
@@ -56,4 +59,5 @@ function RecipeIndexControllerFunction($stateParams, $state, Factory) {
 
 function RecipeShowControllerFunction($stateParams, $state, Factory) {
   this.recipe = Factory.recipes.get({id: $stateParams.id});
+  this.ingredients = Factory.ingredients.query({recipe_id: $stateParams.id})
 }

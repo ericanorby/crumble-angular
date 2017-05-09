@@ -13,6 +13,11 @@
   </div>
 </div>
 
+<h2>Ingredients</h2>
+<div class="ingredients" ng-repeat="ingredient in vm.ingredients">
+  + {{ingredient.name}}, {{ingredient.amount}} {{ingredient.measurement}}
+</div>
+
 <div class="directions">
   <p>{{vm.recipe.directions}}</p>
 </div>

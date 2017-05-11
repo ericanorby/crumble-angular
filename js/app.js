@@ -23,7 +23,25 @@ angular
     "$state",
     "Factory",
     RecipeShowControllerFunction
-  ]);
+  ])
+  .controller("RecipeNewController", [
+    "$state",
+    "Factory",
+    RecipeNewControllerFunction
+  ])
+  .directive('stringToNumber', function() {
+    return {
+      require: 'ngModel',
+      link: function(scope, element, attrs, ngModel) {
+        ngModel.$parsers.push(function(value) {
+          return '' + value;
+        });
+        ngModel.$formatters.push(function(value) {
+          return parseFloat(value, 10);
+        });
+      }
+    }
+  });
 
 function RouterFunction($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -33,12 +51,18 @@ function RouterFunction($stateProvider, $urlRouterProvider) {
       controller: "RecipeIndexController",
       controllerAs: "vm"
     })
+    .state("RecipeNew", {
+      url: "/recipes/new",
+      templateUrl: "/js/ng-views/recipes/new.html",
+      controller: "RecipeNewController",
+      controllerAs: "vm"
+    })
     .state("RecipeShow", {
       url: "/recipes/:id",
       templateUrl: "/js/ng-views/recipes/show.html",
       controller: "RecipeShowController",
       controllerAs: "vm"
-    })
+    });
   $urlRouterProvider.otherwise("/recipes");
 }
 
@@ -64,4 +88,15 @@ function RecipeShowControllerFunction($stateParams, $state, Factory) {
     vm.costPerServing = parseFloat(recipe.cost_per_serving).toFixed(2);
   });
   this.ingredients = Factory.ingredients.query({recipe_id: $stateParams.id});
+}
+
+function RecipeNewControllerFunction($state, Factory) {
+  this.recipe = new Factory.recipes();
+  this.create = function(){
+    this.recipe.$save(function(recipe) {
+      $state.go('RecipeShow', {
+        id: recipe.id
+      })
+    })
+  }
 }

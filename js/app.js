@@ -92,11 +92,11 @@ function RecipeShowControllerFunction($stateParams, $state, Factory) {
 
 function RecipeNewControllerFunction($state, Factory) {
   this.recipe = new Factory.recipes();
-  this.create = function(){
+  this.create = function() {
     this.recipe.$save(function(recipe) {
       $state.go('RecipeShow', {
         id: recipe.id
-      })
-    })
+      });
+    });
   }
 }

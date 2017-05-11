@@ -122,9 +122,24 @@ i {
   padding: 0 30px;
 }
 
-form input {
+.recipes-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipes-heading h2 {
+  font-size: 26px;
+}
+
+input {
+  border: 1px solid gray;
   display: block;
   font-size: 20px;
   margin: 10px 0;
-  padding: 5px;
+  padding: 2px 5px;
+}
+
+#search-bar {
+  border-radius: 4px;
 }

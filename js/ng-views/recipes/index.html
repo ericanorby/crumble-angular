@@ -1,8 +1,17 @@
-<div class="recipe-preview-container">
-  <div ng-repeat="recipe in vm.recipes">
-    <h2>{{recipe.name}}</h2>
-    <a ui-sref="RecipeShow({id: recipe.id})">
-      <div class="recipe-preview-pic" style="background-image: url({{recipe.photo_url}})"></div>
-    </a>
+<div class="recipe-index">
+
+  <div class="recipes-heading">
+    <h2>View All Recipes</h2>
+    <input id="search-bar" type="text" ng-model="searchInput" placeholder="search" />
   </div>
+
+  <div class="recipe-preview-container">
+    <div ng-repeat="recipe in vm.recipes | filter: searchInput">
+      <h2>{{recipe.name}}</h2>
+      <a ui-sref="RecipeShow({id: recipe.id})">
+        <div class="recipe-preview-pic" style="background-image: url({{recipe.photo_url}})"></div>
+      </a>
+    </div>
+  </div>
+
 </div>

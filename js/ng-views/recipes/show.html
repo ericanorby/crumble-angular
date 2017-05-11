@@ -1,19 +1,32 @@
-<div class="recipe-pic" style="background-image: url({{vm.recipe.photo_url}})">
+<div class="recipe-show">
+  <div class="recipe-pic" style="background-image: url({{vm.recipe.photo_url}})"></div>
   <div class="recipe-info">
     <h1>{{vm.recipe.name}}</h1>
+    <hr/>
     <h2>Submitted by: {{vm.recipe.author}}</h2>
     <h3>Source: {{vm.recipe.source}}</h3>
+    <ul>
+      <li>
+        <i class="fa fa-spoon fa-3x" aria-hidden="true"></i>
+        <div><span>{{vm.recipe.servings}}</span><br/>Servings</div>
+      </li>
+      <li>
+        <i class="fa fa-usd fa-3x" aria-hidden="true"></i>
+        <div><span>{{vm.totalCost}}</span><br/>Total Cost</div>
+      </li>
+      <li>
+        <i class="fa fa-info-circle fa-3x" aria-hidden="true"></i>
+        <div><span>{{vm.recipe.cal_per_serving}}</span><br/>Cal/Serving</div>
+      </li>
+      <li>
+        <i class="fa fa-usd fa-3x" aria-hidden="true"></i>
+        <div><span>{{vm.costPerServing}}</span><br/>Cost/Serving</div>
+      </li>
+    </ul>
   </div>
 </div>
 
 <div class="recipe-details">
-  <ul>
-    <li>Servings: {{vm.recipe.servings}}</li>
-    <li>Total Cost: {{vm.recipe.total_cost}}</li>
-    <li>Cost/Serving: {{vm.recipe.cost_per_serving}}</li>
-    <li>Cal/Serving: {{vm.recipe.cal_per_serving}}</li>
-  </ul>
-
   <div class="ingredients-container">
     <h2>Ingredients</h2>
     <div class="ingredients" ng-repeat="ingredient in vm.ingredients">

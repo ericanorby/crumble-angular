@@ -58,6 +58,10 @@ function RecipeIndexControllerFunction($stateParams, $state, Factory) {
 }
 
 function RecipeShowControllerFunction($stateParams, $state, Factory) {
-  this.recipe = Factory.recipes.get({id: $stateParams.id});
-  this.ingredients = Factory.ingredients.query({recipe_id: $stateParams.id})
+  var vm = this;
+  this.recipe = Factory.recipes.get({id: $stateParams.id}, function(recipe) {
+    vm.totalCost = parseFloat(recipe.total_cost).toFixed(2);
+    vm.costPerServing = parseFloat(recipe.cost_per_serving).toFixed(2);
+  });
+  this.ingredients = Factory.ingredients.query({recipe_id: $stateParams.id});
 }

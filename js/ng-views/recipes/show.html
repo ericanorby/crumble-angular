@@ -4,7 +4,7 @@
     <h1>{{vm.recipe.name}}</h1>
     <hr/>
     <h2>Submitted by: {{vm.recipe.author}}</h2>
-    <h3>Source: {{vm.recipe.source}}</h3>
+    <h3>Source: <a href="{{vm.recipe.source}}" target="_blank">{{vm.recipe.source}}</a></h3>
     <ul>
       <li>
         <i class="fa fa-spoon fa-3x" aria-hidden="true"></i>
@@ -30,7 +30,7 @@
   <div class="ingredients-container">
     <h2>Ingredients</h2>
     <div class="ingredients" ng-repeat="ingredient in vm.ingredients">
-      + {{ingredient.name}}, {{ingredient.amount}} {{ingredient.measurement}}
+      + <a ui-sref="IngredientShow({recipe_id: vm.recipe.id, id: ingredient.id})"> {{ingredient.name}} </a>, {{ingredient.amount}} {{ingredient.measurement}}
     </div>
   </div>
 

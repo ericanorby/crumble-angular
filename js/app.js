@@ -29,6 +29,11 @@ angular
     "Factory",
     RecipeNewControllerFunction
   ])
+  .controller("IngredientShowController", [
+    "$stateParams",
+    "Factory",
+    IngredientShowControllerFunction
+  ])
   .directive('stringToNumber', function() {
     return {
       require: 'ngModel',
@@ -61,6 +66,12 @@ function RouterFunction($stateProvider, $urlRouterProvider) {
       url: "/recipes/:id",
       templateUrl: "/js/ng-views/recipes/show.html",
       controller: "RecipeShowController",
+      controllerAs: "vm"
+    })
+    .state("IngredientShow", {
+      url: "/recipes/:recipe_id/ingredients/:id",
+      templateUrl: "/js/ng-views/ingredients/show.html",
+      controller: "IngredientShowController",
       controllerAs: "vm"
     });
   $urlRouterProvider.otherwise("/recipes");
@@ -99,4 +110,8 @@ function RecipeNewControllerFunction($state, Factory) {
       });
     });
   }
+}
+
+function IngredientShowControllerFunction($stateParams, Factory) {
+  this.ingredient = Factory.ingredients.get({recipe_id: $stateParams.recipe_id, id: $stateParams.id});
 }

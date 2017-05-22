@@ -32,10 +32,18 @@
     <div class="ingredients" ng-repeat="ingredient in vm.ingredients">
       + <a ui-sref="IngredientShow({recipe_id: vm.recipe.id, id: ingredient.id})"> {{ingredient.name}} </a>, {{ingredient.amount}} {{ingredient.measurement}}
     </div>
+    <button ng-click="vm.toggleForm = !vm.toggleForm">Add New</button>
+    <form ng-show="vm.toggleForm" ng-submit="vm.create()">
+      <input type="text" ng-model="vm.newIngredient.name" placeholder="name" required />
+      <input type="text" ng-model="vm.newIngredient.amount" placeholder="amount" required />
+      <input type="text" ng-model="vm.newIngredient.measurement" placeholder="measurement" required />
+      <input type="number" ng-model="vm.newIngredient.calories" placeholder="calories" required />
+      <button type="submit">Add</button>
+    </form>
   </div>
 
   <div class="directions">
     <h2>Directions</h2>
-    <p>{{vm.recipe.directions}}</p>
+    <p style="white-space: pre-line">{{vm.recipe.directions}}</p>
   </div>
 </div>

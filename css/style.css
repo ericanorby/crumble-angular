@@ -9,7 +9,7 @@ body {
 header {
   padding: 20px;
   font-size: 30px;
-  background: #4c2059;
+  background: #70487c;
   color: white;
 }
 
@@ -74,7 +74,7 @@ main {
 hr {
   width: 160px;
   margin-left: 0;
-  border: 2px solid #4c2059;
+  border: 2px solid #70487c;
 }
 
 .recipe-info {
@@ -132,7 +132,7 @@ i {
   font-size: 26px;
 }
 
-input {
+input, textarea {
   border: 1px solid gray;
   display: block;
   font-size: 20px;

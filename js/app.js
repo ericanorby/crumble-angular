@@ -99,6 +99,13 @@ function RecipeShowControllerFunction($stateParams, $state, Factory) {
     vm.costPerServing = parseFloat(recipe.cost_per_serving).toFixed(2);
   });
   this.ingredients = Factory.ingredients.query({recipe_id: $stateParams.id});
+  this.newIngredient = new Factory.ingredients();
+  this.create = function() {
+    vm.newIngredient.recipe_id = $stateParams.id;
+    vm.newIngredient.$save(function() {
+      $state.reload()
+    });
+  }
 }
 
 function RecipeNewControllerFunction($state, Factory) {
